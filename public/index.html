@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egg Farm Expense Ledger</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Egg Farm Expense Ledger</h1>
+            <p class="subtitle">Track and manage your farm expenses efficiently</p>
+        </header>
+        
+        <div class="dashboard">
+            <div class="left-column">
+                <div class="card">
+                    <h2>Add New Expense</h2>
+                    <form id="expense-form">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" id="description" placeholder="What did you purchase?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" required>
+                                <option value="">Select a category</option>
+                                <option value="feed">Feed</option>
+                                <option value="health">Health & Medication</option>
+                                <option value="equipment">Equipment & Supplies</option>
+                                <option value="labor">Labor</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount ($)</label>
+                            <input type="number" id="amount" step="0.01" min="0" placeholder="0.00" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity (optional)</label>
+                            <input type="number" id="quantity" step="0.01" min="0" placeholder="e.g., 50 lbs">
+                        </div>
+                        <div class="form-group">
+                            <label for="unit">Unit (optional)</label>
+                            <input type="text" id="unit" placeholder="e.g., lbs, bags, etc.">
+                        </div>
+                        <button type="submit">Add Expense</button>
+                    </form>
+                </div>
+                
+                <div class="card">
+                    <h2>Expense Summary</h2>
+                    <div class="summary-stats">
+                        <div class="stat">
+                            <div class="stat-value" id="total-expenses">$0.00</div>
+                            <div class="stat-label">Total Expenses</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="month-expenses">$0.00</div>
+                            <div class="stat-label">This Month</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="avg-monthly">$0.00</div>
+                            <div class="stat-label">Avg Monthly</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="expense-count">0</div>
+                            <div class="stat-label">Total Records</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="card">
+                    <h2>Recent Expenses</h2>
+                    <div class="expense-list">
+                        <table id="expense-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="expense-table-body">
+                                <!-- Expenses will be populated here -->
+                            </tbody>
+                        </table>
+                        <div id="empty-state" class="empty-state">
+                            <p>No expenses recorded yet.</p>
+                            <p>Add your first expense using the form on the left.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2>Expense Breakdown by Category</h2>
+                    <div class="chart-container">
+                        <canvas id="category-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Egg Farm Expense Ledger &copy; 2023 | Track your farm expenses efficiently</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
